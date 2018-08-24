@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
@@ -18,3 +19,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'active_model_serializers', '~> 0.10.7'
