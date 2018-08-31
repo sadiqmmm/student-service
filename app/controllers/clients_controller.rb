@@ -17,12 +17,23 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = Client.new(client_params)
+    client = Client.create!(
+      email: params['client']['email'],
+      password: params['client']['password'],
+      password_confirmation: params['client']['password_confirmation'],
+      auth_token: unique_auth_token
+    )
 
-    if @client.save
-      redirect_to @client, notice: 'Client was successfully created.'
+    if client
+      session[:client] = client.id
+      render json: { status: :created }
+      # TODO
+      # create current_user endpoint
+      # https://www.owasp.org/index.php/HttpOnly
+      #
+      #cookies["dashtrack_user_id"] = { value: user.id, httponly: true }
     else
-      render :new
+      render json: { status: 500 }
     end
   end
 
