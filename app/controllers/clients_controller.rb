@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :unique_auth_token, only: [:create]
 
   def index
     @clients = Client.all
@@ -46,4 +47,16 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:email, :password_digest)
     end
+
+    def unique_auth_token
+      unique_auth = false
+      while unique_auth == false
+        auth_key = SecureRandom.base64.tr('+/=', 'Qrt')
+        if !Client.all.where(auth_token: auth_key).any?
+          unique_auth = true
+          return auth_key
+        end
+      end
+    end
+
 end
