@@ -56,7 +56,11 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:email, :password_digest)
+      params.require(:client).permit(
+        :email,
+        :password_digest,
+        :subdomain
+      )
     end
 
     def unique_auth_token
