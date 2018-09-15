@@ -1,12 +1,14 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_action :unique_auth_token, only: [:create]
+  include AuthenticationConcern
 
   def index
     @clients = Client.all
   end
 
   def show
+    puts "CURRENT CLIENT" * 100, @current_client.inspect, "CURRENT CLIENT" * 100
   end
 
   def new
@@ -26,13 +28,8 @@ class ClientsController < ApplicationController
     )
 
     if client
-      session[:client] = client.id
+      session[:client_id] = client.id
       render json: { status: :created }
-      # TODO
-      # create current_user endpoint
-      # https://www.owasp.org/index.php/HttpOnly
-      #
-      #cookies["dashtrack_user_id"] = { value: user.id, httponly: true }
     else
       render json: { status: 500 }
     end
