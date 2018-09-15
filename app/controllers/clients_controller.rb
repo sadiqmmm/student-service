@@ -1,6 +1,5 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
-  before_action :unique_auth_token, only: [:create]
   include AuthenticationConcern
 
   def index
@@ -12,6 +11,7 @@ class ClientsController < ApplicationController
 
   def get_client_applications
     puts "CURRENT CLIENT" * 100, @current_client.inspect, "CURRENT CLIENT" * 100
+    render json: @current_client
   end
 
   def new
