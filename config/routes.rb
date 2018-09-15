@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :portfolio_app_users
   resources :app_templates
   resources :clients
+  get 'get-client-applications', to: 'clients#get_client_applications'
 
   root to: 'home#index'
 end
