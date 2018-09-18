@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
 
   def create
     client = Client
-            .find_by(email: params['user']['email'])
-            .try(:authenticate, params['user']['password'])
+            .find_by(email: params['client']['email'])
+            .try(:authenticate, params['client']['password'])
 
     if client
       session[:client_id] = client.id
