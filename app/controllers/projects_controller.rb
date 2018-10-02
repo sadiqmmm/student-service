@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
 
     render json: @project
   end
