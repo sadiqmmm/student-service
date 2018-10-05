@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:client_id] = client.id
       render json: { status: :created }
     else
-      render json: { status: 500 }
+      render json: { status: 401 }
     end
   end
 
