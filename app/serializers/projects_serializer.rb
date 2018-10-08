@@ -5,4 +5,6 @@ class ProjectSerializer < ActiveModel::Serializer
              :logo,
              :white_logo,
              :slug
+
+  has_many :endpoints
 end
