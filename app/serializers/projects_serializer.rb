@@ -3,5 +3,6 @@ class ProjectSerializer < ActiveModel::Serializer
              :title,
              :language,
              :logo,
+             :white_logo,
              :slug
 end
