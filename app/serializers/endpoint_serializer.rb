@@ -1,5 +1,6 @@
 class EndpointSerializer < ActiveModel::Serializer
   attributes :title,
              :link,
-             :http_verb
+             :http_verb,
+             :id
 end
