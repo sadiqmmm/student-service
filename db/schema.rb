@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_205544) do
+ActiveRecord::Schema.define(version: 2018_10_08_133557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_205544) do
     t.string "language"
     t.string "logo"
     t.text "slug"
+    t.text "white_logo"
   end
 
   add_foreign_key "portfolio_app_users", "app_templates"
