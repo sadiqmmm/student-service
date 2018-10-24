@@ -1,9 +1,10 @@
 class PortfolioItemsController < ApplicationController
   before_action :set_portfolio_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_client_from_subdomain, only: [:index]
 
-  # GET /portfolio_items
   def index
-    @portfolio_items = PortfolioItem.all
+    @portfolio_items = @client.portfolio_items
+    render json: @portfolio_items
   end
 
   # GET /portfolio_items/1
@@ -54,5 +55,9 @@ class PortfolioItemsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def portfolio_item_params
       params.require(:portfolio_item).permit(:client_id, :name, :description, :url)
+    end
+
+    def set_client_from_subdomain
+      @client = Client.find_by(subdomain: request.subdomain)
     end
 end
