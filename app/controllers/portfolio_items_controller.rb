@@ -1,6 +1,7 @@
 class PortfolioItemsController < ApplicationController
   before_action :set_portfolio_item, only: [:show, :edit, :update, :destroy]
   before_action :set_client_from_subdomain, only: [:index, :show, :create]
+  include AuthenticationConcern
 
   def index
     @portfolio_items = @client.portfolio_items
@@ -21,12 +22,16 @@ class PortfolioItemsController < ApplicationController
   end
 
   def create
-    @portfolio_item = @client.portfolio_items.new(portfolio_item_params)
+    if @current_client && @current_client == @client
+      @portfolio_item = @client.portfolio_items.new(portfolio_item_params)
 
-    if @portfolio_item.save
-      render json: @portfolio_item, status: :created
+      if @portfolio_item.save
+        render json: @portfolio_item, status: :created
+      else
+        render json: @portfolio_item.errors, status: :unprocessable_entity
+      end
     else
-      render json: @portfolio_item.errors, status: :unprocessable_entity
+      render json: { status: :unauthorized }
     end
   end
 
