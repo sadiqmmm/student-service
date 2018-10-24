@@ -1,6 +1,6 @@
 class PortfolioItemsController < ApplicationController
   before_action :set_portfolio_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_client_from_subdomain, only: [:index, :show]
+  before_action :set_client_from_subdomain, only: [:index, :show, :create]
 
   def index
     @portfolio_items = @client.portfolio_items
@@ -20,14 +20,13 @@ class PortfolioItemsController < ApplicationController
   def edit
   end
 
-  # POST /portfolio_items
   def create
-    @portfolio_item = PortfolioItem.new(portfolio_item_params)
+    @portfolio_item = @client.portfolio_items.new(portfolio_item_params)
 
     if @portfolio_item.save
-      redirect_to @portfolio_item, notice: 'Portfolio item was successfully created.'
+      render json: @portfolio_item, status: :created
     else
-      render :new
+      render json: @portfolio_item.errors, status: :unprocessable_entity
     end
   end
 
