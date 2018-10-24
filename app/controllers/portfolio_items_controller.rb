@@ -56,9 +56,12 @@ class PortfolioItemsController < ApplicationController
       @portfolio_item = PortfolioItem.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def portfolio_item_params
-      params.require(:portfolio_item).permit(:client_id, :name, :description, :url)
+      params.require(:portfolio_item).permit(
+        :name,
+        :description,
+        :url
+      )
     end
 
     def set_client_from_subdomain
