@@ -5,6 +5,10 @@ module CorsConcern
     before_action :set_white_listed_domains
   end
 
+  def white_listed_domains
+    ClientDomain.all.pluck(:url)
+  end
+
   def set_white_listed_domains
     Rails.application.config.middleware.insert_before 0, Rack::Cors do
       allow do
@@ -18,8 +22,7 @@ module CorsConcern
       end
 
       allow do
-        origins ClientDomain.all.pluck(:url)
-        puts "client domains" * 500, ClientDomain.all.pluck(:url), "client domains" * 500
+        origins white_listed_domains
         resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
       end
     end
