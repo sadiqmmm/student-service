@@ -6,6 +6,8 @@ class Client < ApplicationRecord
 
   validates_presence_of :password_digest
 
+  has_many :client_domains, dependent: :destroy
+
   has_many :portfolio_app_users, dependent: :destroy
   has_many :portfolio_items, dependent: :destroy
 end
