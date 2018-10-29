@@ -1,0 +1,2 @@
+class ClientDomainsController < ApplicationController
+end
