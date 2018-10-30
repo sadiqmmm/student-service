@@ -5,7 +5,7 @@ class PortfolioItemSerializer < ActiveModel::Serializer
              :url,
              :thumb_image_url,
              :banner_image_url,
-             :logo_url,
+             :logo_url
 
   has_one :client
 end

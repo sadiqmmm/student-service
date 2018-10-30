@@ -13,7 +13,6 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     origins do |origin|
       ClientDomain.all.pluck(:url).include?(origin)
     end
-    puts "client domains" * 500, ClientDomain.all.pluck(:url), "client domains" * 500
     resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
   end
 end
