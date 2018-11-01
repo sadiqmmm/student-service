@@ -16,6 +16,16 @@ class ClientDomainsController < ApplicationController
     end
   end
 
+  def destroy
+    @client_domain = ClientDomain.find(params[:id])
+
+    if @client_domain.client == @current_client
+      @client_domain.destroy
+    else
+      render json: { status: :unauthorized }
+    end
+  end
+
   private
 
     def client_domain_params
