@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :project_tables
   resources :client_domains, only: [:index, :create, :destroy]
   resources :projects, only: [:index, :show]
   resources :portfolio_items, only: [:index, :show, :create]

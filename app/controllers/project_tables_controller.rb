@@ -1,0 +1,2 @@
+class ProjectTablesController < ApplicationController
+end

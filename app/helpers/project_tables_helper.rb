@@ -1,0 +1,2 @@
+module ProjectTablesHelper
+end
