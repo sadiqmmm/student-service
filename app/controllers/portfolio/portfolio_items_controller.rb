@@ -1,4 +1,4 @@
-class PortfolioItemsController < ApplicationController
+class Portfolio::PortfolioItemsController < ApplicationController
   before_action :set_portfolio_item, only: [:show, :edit, :update, :destroy]
   before_action :set_client_from_subdomain, only: [:index, :show, :create]
   include AuthenticationConcern

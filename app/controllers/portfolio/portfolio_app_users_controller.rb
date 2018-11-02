@@ -1,4 +1,4 @@
-class PortfolioAppUsersController < ApplicationController
+class Portfolio::PortfolioAppUsersController < ApplicationController
   before_action :set_portfolio_app_user, only: [:show, :edit, :update, :destroy]
 
   # GET /portfolio_app_users

@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  # Portfolio
+  namespace :portfolio do
+    resources :portfolio_items, only: [:index, :show, :create]
+    resources :portfolio_app_users
+  end
+
+  # Application
+  resources :projects, only: [:index, :show]
   resources :project_tables
   resources :client_domains, only: [:index, :create, :destroy]
-  resources :projects, only: [:index, :show]
-  resources :portfolio_items, only: [:index, :show, :create]
-  resources :portfolio_app_users
   resources :app_templates
   resources :clients
   resources :sessions, only: [:create]
