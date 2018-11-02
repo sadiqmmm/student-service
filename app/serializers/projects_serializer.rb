@@ -4,7 +4,8 @@ class ProjectSerializer < ActiveModel::Serializer
              :language,
              :logo,
              :white_logo,
-             :slug
+             :slug,
+             :route_namespace
 
   has_many :endpoints
   has_many :project_tables

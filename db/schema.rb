@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_204023) do
+ActiveRecord::Schema.define(version: 2018_11_02_220406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 2018_11_02_204023) do
     t.string "logo"
     t.text "slug"
     t.text "white_logo"
+    t.string "route_namespace"
   end
 
   add_foreign_key "client_domains", "clients"
