@@ -7,4 +7,5 @@ class ProjectSerializer < ActiveModel::Serializer
              :slug
 
   has_many :endpoints
+  has_many :project_tables
 end
