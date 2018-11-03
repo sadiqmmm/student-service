@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Portfolio
   namespace :portfolio do
-    resources :portfolio_items, only: [:index, :show, :create]
+    resources :portfolio_items, only: [:index, :show, :create, :destroy]
     resources :portfolio_app_users
   end
 

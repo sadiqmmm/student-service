@@ -44,10 +44,12 @@ class Portfolio::PortfolioItemsController < ApplicationController
     end
   end
 
-  # DELETE /portfolio_items/1
   def destroy
-    @portfolio_item.destroy
-    redirect_to portfolio_items_url, notice: 'Portfolio item was successfully destroyed.'
+    if @portfolio_item.client == @current_client
+      @portfolio_item.destroy
+    else
+      render json: { status: :unauthorized }
+    end
   end
 
   private
