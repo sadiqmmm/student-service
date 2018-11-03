@@ -23,6 +23,6 @@ class PortfolioItem < ApplicationRecord
   end
 
   def column_names_merged_with_images
-    PortfolioItem.column_names.push(['thumb_image', 'banner_image', 'logo']).flatten
+    PortfolioItem.column_names.push(['thumb_image', 'banner_image', 'logo']).flatten.uniq
   end
 end
