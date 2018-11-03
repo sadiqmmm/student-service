@@ -5,7 +5,7 @@ class Portfolio::PortfolioItemsController < ApplicationController
 
   def index
     @portfolio_items = @client.portfolio_items
-    render json: { portfolio_items: @portfolio_items, metadata: PortfolioItem.column_names_merged_with_images }
+    render json: @portfolio_items
   end
 
   def show
