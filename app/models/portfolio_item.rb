@@ -23,7 +23,6 @@ class PortfolioItem < ApplicationRecord
   end
 
   def column_names_merged_with_images
-    "I'm here..."
-    # String(column_names.push(['thumb_image', 'banner_image', 'logo']).flatten)
+    String(self.column_names.push(['thumb_image', 'banner_image', 'logo']).flatten)
   end
 end
