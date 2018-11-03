@@ -21,4 +21,8 @@ class PortfolioItem < ApplicationRecord
       self.logo.attachment.service_url
     end
   end
+
+  def self.column_names_merged_with_images
+    column_names.push(['thumb_image', 'banner_image', 'logo']).flatten
+  end
 end
