@@ -6,11 +6,11 @@ class Portfolio::PortfolioItemsController < ApplicationController
   def index
     @portfolio_items = @client.portfolio_items
 
-    if @portfolio_items.count > 0
-      render json: @portfolio_items
-    else
-      render json: { portfolio_items: [ PortfolioItem.new ] }
+    if @portfolio_items.count == 0
+      @portfolio_items = [PortfolioItem.new]
     end
+
+    render json: @portfolio_items
   end
 
   def show
