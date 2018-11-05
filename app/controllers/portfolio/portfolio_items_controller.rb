@@ -62,7 +62,10 @@ class Portfolio::PortfolioItemsController < ApplicationController
       params.require(:portfolio_item).permit(
         :name,
         :description,
-        :url
+        :url,
+        :thumb_image,
+        :banner_image,
+        :logo
       )
     end
 
