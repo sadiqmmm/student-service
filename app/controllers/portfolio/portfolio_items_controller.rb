@@ -5,7 +5,12 @@ class Portfolio::PortfolioItemsController < ApplicationController
 
   def index
     @portfolio_items = @client.portfolio_items
-    render json: @portfolio_items
+
+    if @portfolio_items.count > 0
+      render json: @portfolio_items
+    else
+      render json: { portfolio_items: PortfolioItem.new.column_names_merged_with_images }
+    end
   end
 
   def show
