@@ -9,7 +9,7 @@ class Portfolio::PortfolioItemsController < ApplicationController
     if @portfolio_items.count > 0
       render json: @portfolio_items
     else
-      render json: { portfolio_items: PortfolioItem.new.column_names_merged_with_images }
+      render json: { portfolio_items: [ PortfolioItem.new ] }
     end
   end
 
