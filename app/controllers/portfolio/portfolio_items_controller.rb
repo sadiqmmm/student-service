@@ -30,8 +30,6 @@ class Portfolio::PortfolioItemsController < ApplicationController
     if @current_client && @current_client == @client
       @portfolio_item = @client.portfolio_items.new(portfolio_item_params)
 
-      puts "PARAMS" * 500, @portfolio_item.inspect, "ENDPARAMS" * 500
-
       if @portfolio_item.save
         render json: @portfolio_item, status: :created
       else
