@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_10_175643) do
+ActiveRecord::Schema.define(version: 2018_11_10_181845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2018_11_10_175643) do
     t.bigint "devworkflow_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "client_id"
+    t.index ["client_id"], name: "dw_cli_client"
     t.index ["devworkflow_project_line_item_id"], name: "dw_pli_cli"
     t.index ["devworkflow_user_id"], name: "dw_u_cli"
   end
@@ -77,6 +79,8 @@ ActiveRecord::Schema.define(version: 2018_11_10_175643) do
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "client_id"
+    t.index ["client_id"], name: "dw_pli_client"
     t.index ["devworkflow_project_id"], name: "index_devworkflow_project_line_items_on_devworkflow_project_id"
   end
 
@@ -87,6 +91,8 @@ ActiveRecord::Schema.define(version: 2018_11_10_175643) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "client_id"
+    t.index ["client_id"], name: "dw_project_client"
     t.index ["devworkflow_user_id"], name: "index_devworkflow_projects_on_devworkflow_user_id"
   end
 
@@ -96,6 +102,8 @@ ActiveRecord::Schema.define(version: 2018_11_10_175643) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "client_id"
+    t.index ["client_id"], name: "dw_user_client"
   end
 
   create_table "endpoints", force: :cascade do |t|
@@ -163,10 +171,14 @@ ActiveRecord::Schema.define(version: 2018_11_10_175643) do
   end
 
   add_foreign_key "client_domains", "clients"
+  add_foreign_key "devworkflow_check_list_items", "clients"
   add_foreign_key "devworkflow_check_list_items", "devworkflow_project_line_items"
   add_foreign_key "devworkflow_check_list_items", "devworkflow_users"
+  add_foreign_key "devworkflow_project_line_items", "clients"
   add_foreign_key "devworkflow_project_line_items", "devworkflow_projects"
+  add_foreign_key "devworkflow_projects", "clients"
   add_foreign_key "devworkflow_projects", "devworkflow_users"
+  add_foreign_key "devworkflow_users", "clients"
   add_foreign_key "endpoints", "projects"
   add_foreign_key "portfolio_app_users", "app_templates"
   add_foreign_key "portfolio_app_users", "clients"
