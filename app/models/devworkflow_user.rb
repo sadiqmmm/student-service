@@ -1,4 +1,5 @@
 class DevworkflowUser < ApplicationRecord
+  belongs_to :client
   has_secure_password
 
   validates_uniqueness_of :email

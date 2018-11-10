@@ -1,5 +1,6 @@
 class DevworkflowProject < ApplicationRecord
   belongs_to :devworkflow_user
+  belongs_to :client
 
   validates_presence_of :title, :main_objective
   validates :main_objective, length: { maximum: 130 }

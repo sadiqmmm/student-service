@@ -1,5 +1,6 @@
 class DevworkflowProjectsController < ApplicationController
   include DevworkflowAuthenticationConcern
+  include ClientFromSubdomainConcern
 
   def index
     @devworkflow_projects = @devworkflow_current_user.devworkflow_projects.active.sort_by_last_updated
@@ -9,6 +10,7 @@ class DevworkflowProjectsController < ApplicationController
   def create
     @devworkflow_project = DevworkflowProject.new(devworkflow_project_params)
     @devworkflow_project.devworkflow_user_id = @devworkflow_current_user.id
+    @devworkflow_project.client_id = @client.id
 
     if @devworkflow_project.save
       render json: @devworkflow_project, status: :created
