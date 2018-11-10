@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_10_175351) do
+ActiveRecord::Schema.define(version: 2018_11_10_175643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 2018_11_10_175351) do
     t.datetime "updated_at", null: false
     t.text "auth_token"
     t.string "subdomain"
+  end
+
+  create_table "devworkflow_check_list_items", force: :cascade do |t|
+    t.bigint "devworkflow_project_line_item_id"
+    t.string "title"
+    t.boolean "completed", default: false
+    t.bigint "devworkflow_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["devworkflow_project_line_item_id"], name: "dw_pli_cli"
+    t.index ["devworkflow_user_id"], name: "dw_u_cli"
   end
 
   create_table "devworkflow_project_line_items", force: :cascade do |t|
@@ -152,6 +163,8 @@ ActiveRecord::Schema.define(version: 2018_11_10_175351) do
   end
 
   add_foreign_key "client_domains", "clients"
+  add_foreign_key "devworkflow_check_list_items", "devworkflow_project_line_items"
+  add_foreign_key "devworkflow_check_list_items", "devworkflow_users"
   add_foreign_key "devworkflow_project_line_items", "devworkflow_projects"
   add_foreign_key "devworkflow_projects", "devworkflow_users"
   add_foreign_key "endpoints", "projects"
