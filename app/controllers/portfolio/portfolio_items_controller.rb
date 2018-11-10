@@ -1,7 +1,7 @@
 class Portfolio::PortfolioItemsController < ApplicationController
   before_action :set_portfolio_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_client_from_subdomain, only: [:index, :show, :create]
   include AuthenticationConcern
+  include ClientFromSubdomainConcern
 
   def index
     @portfolio_items = @client.portfolio_items
@@ -58,7 +58,6 @@ class Portfolio::PortfolioItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_portfolio_item
       @portfolio_item = PortfolioItem.find(params[:id])
     end
@@ -72,9 +71,5 @@ class Portfolio::PortfolioItemsController < ApplicationController
         :banner_image,
         :logo
       )
-    end
-
-    def set_client_from_subdomain
-      @client = Client.find_by(subdomain: request.subdomain)
     end
 end
