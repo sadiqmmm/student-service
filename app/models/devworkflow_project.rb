@@ -19,6 +19,13 @@ class DevworkflowProject < ApplicationRecord
 
   after_create :build_project_line_items
 
+  def column_names_merged_with_images
+    DevworkflowProject.column_names
+      .select { |column| !['client_id'].include?(column) }
+      .flatten
+      .uniq
+  end
+
   private
 
     def build_project_line_items
