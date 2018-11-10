@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_220406) do
+ActiveRecord::Schema.define(version: 2018_11_10_174736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 2018_11_02_220406) do
     t.datetime "updated_at", null: false
     t.text "auth_token"
     t.string "subdomain"
+  end
+
+  create_table "devworkflow_users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "endpoints", force: :cascade do |t|
