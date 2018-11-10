@@ -1,4 +1,4 @@
-class DevworkflowProjectsController < ApplicationController
+class Devworkflow::ProjectsController < ApplicationController
   include DevworkflowAuthenticationConcern
   include ClientFromSubdomainConcern
 
