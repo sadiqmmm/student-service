@@ -9,6 +9,10 @@ class Devworkflow::ProjectsController < ApplicationController
       @devworkflow_projects = @client.devworkflow_projects.active.sort_by_last_updated
     end
 
+    if @devworkflow_projects.count == 0
+      @devworkflow_projects = [DevworkflowProject.new]
+    end
+
     render json: @devworkflow_projects, status: :ok
   end
 
