@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_10_175017) do
+ActiveRecord::Schema.define(version: 2018_11_10_175351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 2018_11_10_175017) do
     t.datetime "updated_at", null: false
     t.text "auth_token"
     t.string "subdomain"
+  end
+
+  create_table "devworkflow_project_line_items", force: :cascade do |t|
+    t.bigint "devworkflow_project_id"
+    t.string "title"
+    t.text "description"
+    t.boolean "completed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["devworkflow_project_id"], name: "index_devworkflow_project_line_items_on_devworkflow_project_id"
   end
 
   create_table "devworkflow_projects", force: :cascade do |t|
@@ -142,6 +152,7 @@ ActiveRecord::Schema.define(version: 2018_11_10_175017) do
   end
 
   add_foreign_key "client_domains", "clients"
+  add_foreign_key "devworkflow_project_line_items", "devworkflow_projects"
   add_foreign_key "devworkflow_projects", "devworkflow_users"
   add_foreign_key "endpoints", "projects"
   add_foreign_key "portfolio_app_users", "app_templates"
