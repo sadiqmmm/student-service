@@ -3,12 +3,21 @@ class Devworkflow::ProjectsController < ApplicationController
   include ClientFromSubdomainConcern
 
   def index
-    @devworkflow_projects = @devworkflow_current_user.devworkflow_projects.active.sort_by_last_updated
+    if @devworkflow_current_user
+      @devworkflow_projects = @devworkflow_current_user.devworkflow_projects.active.sort_by_last_updated
+    else
+      @devworkflow_projects = @client.devworkflow_projects.active.sort_by_last_updated
+    end
+
     render json: @devworkflow_projects, status: :ok
   end
 
   def create
     @devworkflow_project = DevworkflowProject.new(devworkflow_project_params)
+    # TODO
+    # Figure out how to set the user
+    # Maybe if only the @client is available,
+    # Find the first user and automatically assign them
     @devworkflow_project.devworkflow_user_id = @devworkflow_current_user.id
     @devworkflow_project.client_id = @client.id
 
