@@ -9,7 +9,7 @@ class Devworkflow::DevworkflowUsersController < ApplicationController
       @devworkflow_users = [DevworkflowUser.new]
     end
 
-    render json: @devworkflow_users, status: :ok
+    render json: @devworkflow_users, includes: 'name,email'
   end
 
   # TODO
