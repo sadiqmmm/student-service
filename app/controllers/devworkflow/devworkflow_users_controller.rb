@@ -9,7 +9,7 @@ class Devworkflow::DevworkflowUsersController < ApplicationController
       @devworkflow_users = [DevworkflowUser.new]
     end
 
-    render json: @devworkflow_users, includes: 'name,email'
+    render json: @devworkflow_users, each_serializer: DevworkflowUserSerializer
   end
 
   # TODO
