@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :check_list_items
     resources :project_line_items, only: [:show, :update]
     resources :devworkflow_projects, only: [:index, :create, :destroy, :update]
+    resources :devworkflow_users, only: [:index, :create, :destroy, :update]
     resources :archived_projects, only: [:index, :update]
     resources :unarchive_projects, only: [:update]
     resources :registrations, only: [:create]
