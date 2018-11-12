@@ -5,7 +5,7 @@ class Devworkflow::DevworkflowUsersController < ApplicationController
   def index
     @devworkflow_users = @client.devworkflow_users
 
-    if @devworkflow_projects.count == 0
+    if @devworkflow_users.count == 0
       @devworkflow_users = [DevworkflowUser.new]
     end
 
