@@ -12,25 +12,20 @@ class Devworkflow::DevworkflowUsersController < ApplicationController
     render json: @devworkflow_users, each_serializer: DevworkflowUserSerializer
   end
 
+  def create
+    @devworkflow_user = DevworkflowUser.new(devworkflow_user_params)
+    @devworkflow_user.client_id = @client.id
+
+    if @devworkflow_user.save
+      render json: @devworkflow_user, status: :created
+    else
+      render :new
+    end
+  end
+
   # TODO
   # Add the rest!
 
-  # def create
-  #   @devworkflow_project = DevworkflowProject.new(devworkflow_project_params)
-  #   # TODO
-  #   # Figure out how to set the user
-  #   # Maybe if only the @client is available,
-  #   # Find the first user and automatically assign them
-  #   @devworkflow_project.devworkflow_user_id = @devworkflow_current_user.id
-  #   @devworkflow_project.client_id = @client.id
-  #
-  #   if @devworkflow_project.save
-  #     render json: @devworkflow_project, status: :created
-  #   else
-  #     render :new
-  #   end
-  # end
-  #
   # def destroy
   #   @devworkflow_project = DevworkflowProject.find(params[:id])
   #
@@ -54,14 +49,15 @@ class Devworkflow::DevworkflowUsersController < ApplicationController
   #     render json: { status: 401 }
   #   end
   # end
-  #
-  # private
-  #
-    def devworkflow_project_params
-      params.require(:project).permit(
-        :title,
-        :main_objective,
-        :status
+
+  private
+
+    def devworkflow_user_params
+      params.require(:devworkflow_user).permit(
+        :email,
+        :name,
+        :password,
+        :password_confirmation
       )
     end
 end
