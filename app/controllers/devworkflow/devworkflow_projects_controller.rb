@@ -59,10 +59,11 @@ class Devworkflow::DevworkflowProjectsController < ApplicationController
   private
 
     def devworkflow_project_params
-      params.require(:project).permit(
+      params.require(:devworkflow_project).permit(
         :title,
         :main_objective,
-        :status
+        :status,
+        :devworkflow_user_id
       )
     end
 end
