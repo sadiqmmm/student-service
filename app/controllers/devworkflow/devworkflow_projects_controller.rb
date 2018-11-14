@@ -18,12 +18,12 @@ class Devworkflow::DevworkflowProjectsController < ApplicationController
 
   def create
     @devworkflow_project = DevworkflowProject.new(devworkflow_project_params)
-    # TODO
-    # Figure out how to set the user
-    # Maybe if only the @client is available,
-    # Find the first user and automatically assign them
-    @devworkflow_project.devworkflow_user_id = @devworkflow_current_user.id
-    @devworkflow_project.client_id = @client.id
+
+    if @devworkflow_current_user
+      @devworkflow_project.devworkflow_user_id = @devworkflow_current_user.id
+    else
+      @devworkflow_project.client_id = @client.id
+    end
 
     if @devworkflow_project.save
       render json: @devworkflow_project, status: :created
