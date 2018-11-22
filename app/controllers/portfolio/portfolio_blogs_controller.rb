@@ -59,7 +59,7 @@ class Portfolio::PortfolioBlogsController < ApplicationController
 
     def portfolio_blog_params
       params.require(:portfolio_blog).permit(
-        :name,
+        :title,
         :content,
         :client_id,
         :featured_image,
