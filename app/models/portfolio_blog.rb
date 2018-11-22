@@ -3,6 +3,11 @@ class PortfolioBlog < ApplicationRecord
 
   has_one_attached :featured_image
 
+  enum status: {
+    draft: 0,
+    published: 1
+  }
+
   def featured_image_url
     if self.featured_image.attachment
       self.featured_image.attachment.service_url
