@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :portfolio do
     resources :portfolio_items, only: [:index, :show, :create, :destroy]
     resources :portfolio_app_users
+    resources :portfolio_blogs
   end
 
   # Devworkflow
