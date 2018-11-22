@@ -10,6 +10,7 @@ class Client < ApplicationRecord
 
   has_many :portfolio_app_users, dependent: :destroy
   has_many :portfolio_items, dependent: :destroy
+  has_many :portfolio_blogs, dependent: :destroy
 
   has_many :devworkflow_check_list_items, dependent: :destroy
   has_many :devworkflow_projects, dependent: :destroy
