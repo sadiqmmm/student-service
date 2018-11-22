@@ -63,6 +63,7 @@ class Portfolio::PortfolioBlogsController < ApplicationController
         :content,
         :client_id,
         :featured_image,
+        :status
       )
     end
 end
