@@ -1,6 +1,8 @@
 class PortfolioBlog < ApplicationRecord
   belongs_to :client
 
+  validates_presence_of :title
+
   has_one_attached :featured_image
 
   enum status: {
