@@ -5,7 +5,7 @@ class PortfolioBlog < ApplicationRecord
 
   has_one_attached :featured_image
 
-  enum status: {
+  enum blog_status: {
     draft: 0,
     published: 1
   }
