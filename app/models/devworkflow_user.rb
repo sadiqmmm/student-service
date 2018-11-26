@@ -12,6 +12,10 @@ class DevworkflowUser < ApplicationRecord
     "[filtered]"
   end
 
+  def filtered_field_2
+    "[filtered]"
+  end
+
   def column_names_merged_with_images
     DevworkflowUser.column_names
       .select { |column| !['client_id', 'password_digest', 'created_at', 'updated_at'].include?(column) }

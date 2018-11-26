@@ -3,6 +3,6 @@ class DevworkflowUserSerializer < ActiveModel::Serializer
              :name,
              :email,
              :filtered_field,
-             :filtered_field,
+             :filtered_field_2,
              :column_names_merged_with_images
 end
