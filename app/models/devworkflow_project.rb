@@ -19,8 +19,11 @@ class DevworkflowProject < ApplicationRecord
 
   after_create :build_project_line_items
 
+  def dw_project_id
+    self.client.auth_token + String(self.id)
+  end
+
   def dw_user_id
-    puts "dw_user_id" * 500, self.client.auth_token + String(self.devworkflow_user_id) + "dw_user_id" * 500
     self.client.auth_token + String(self.devworkflow_user_id)
   end
 
