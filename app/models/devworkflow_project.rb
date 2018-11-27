@@ -23,6 +23,10 @@ class DevworkflowProject < ApplicationRecord
     self.client.auth_token + String(self.id)
   end
 
+  def dw_project_id=(id)
+    id
+  end
+
   def dw_user_id
     self.client.auth_token + String(self.devworkflow_user_id)
   end
