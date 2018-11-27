@@ -19,10 +19,15 @@ class Devworkflow::DevworkflowProjectsController < ApplicationController
   def create
     @devworkflow_project = DevworkflowProject.new(devworkflow_project_params)
 
+    user_id = @devworkflow_project.dw_user_id.sub(@devworkflow_project.client.auth_token, "")
+
+    # TODO
+    # Maybe...
     if @devworkflow_current_user
       @devworkflow_project.devworkflow_user_id = @devworkflow_current_user.id
     else
       @devworkflow_project.client_id = @client.id
+      @devworkflow_project.devworkflow_user_id = user_id
     end
 
     if @devworkflow_project.save
@@ -63,7 +68,7 @@ class Devworkflow::DevworkflowProjectsController < ApplicationController
         :title,
         :main_objective,
         :status,
-        :devworkflow_user_id
+        :dw_user_id
       )
     end
 end
