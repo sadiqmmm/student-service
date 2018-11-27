@@ -17,7 +17,7 @@ class DevworkflowUser < ApplicationRecord
   end
 
   def dw_user_id
-    self.client.auth_token + self.id
+    self.client.auth_token + String(self.id)
   end
 
   def column_names_merged_with_images
