@@ -2,6 +2,6 @@ class DevworkflowProjectSerializer < ActiveModel::Serializer
   attributes :dw_user_id,
              :title,
              :main_objective,
-             :devworkflow_user_id,
+             :dw_user_id,
              :column_names_merged_with_images
 end

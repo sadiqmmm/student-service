@@ -26,6 +26,7 @@ class DevworkflowProject < ApplicationRecord
   def column_names_merged_with_images
     DevworkflowProject.column_names
       .select { |column| !['client_id', 'created_at', 'updated_at', 'status'].include?(column) }
+      .push("dw_user_id")
       .flatten
       .uniq
   end
