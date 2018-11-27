@@ -1,5 +1,5 @@
 class DevworkflowProjectSerializer < ActiveModel::Serializer
-  attributes :id,
+  attributes :dw_user_id,
              :title,
              :main_objective,
              :devworkflow_user_id,

@@ -1,5 +1,5 @@
 class DevworkflowUserSerializer < ActiveModel::Serializer
-  attributes :id,
+  attributes :dw_user_id,
              :name,
              :email,
              :filtered_field,
