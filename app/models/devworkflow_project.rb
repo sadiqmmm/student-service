@@ -20,7 +20,8 @@ class DevworkflowProject < ApplicationRecord
   after_create :build_project_line_items
 
   def dw_user_id
-    self.client.auth_token + String(self.devworkflow_user.id)
+    puts "dw_user_id" * 500, self.client.auth_token + String(self.devworkflow_user_id) + "dw_user_id" * 500
+    self.client.auth_token + String(self.devworkflow_user_id)
   end
 
   def column_names_merged_with_images
