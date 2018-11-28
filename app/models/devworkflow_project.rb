@@ -1,4 +1,5 @@
 class DevworkflowProject < ApplicationRecord
+  attr_accessor :dw_user_id
   belongs_to :devworkflow_user
   belongs_to :client
 
@@ -25,6 +26,10 @@ class DevworkflowProject < ApplicationRecord
 
   def dw_user_id
     self.client.auth_token + String(self.devworkflow_user_id)
+  end
+
+  def dw_user_id=(val)
+    self.dw_user_id = val
   end
 
   def column_names_merged_with_images
