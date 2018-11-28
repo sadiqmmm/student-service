@@ -19,6 +19,8 @@ class Devworkflow::DevworkflowProjectsController < ApplicationController
   def create
     @devworkflow_project = DevworkflowProject.new(devworkflow_project_params)
 
+    puts "CREATE params" * 500, params.inspect, "create params" * 500
+
     if @devworkflow_current_user
       @devworkflow_project.devworkflow_user_id = @devworkflow_current_user.id
     else
