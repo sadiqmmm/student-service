@@ -19,13 +19,13 @@ class Devworkflow::DevworkflowProjectsController < ApplicationController
   def create
     @devworkflow_project = DevworkflowProject.new(devworkflow_project_params)
 
-    puts "CREATE params" * 500, params.inspect, "create params" * 500
-
     if @devworkflow_current_user
       @devworkflow_project.devworkflow_user_id = @devworkflow_current_user.id
     else
+      puts "CREATE params" * 500, params.inspect, "create params" * 500
+
       @devworkflow_project.client_id = @client.id
-      user_id = params[:dw_user_id].sub(@devworkflow_project.client.auth_token, "")
+      user_id = params[:devworkflow_project][:dw_user_id].sub(@client.auth_token, "")
       @devworkflow_project.devworkflow_user_id = user_id
     end
 
