@@ -29,7 +29,7 @@ class DevworkflowProject < ApplicationRecord
   end
 
   def dw_user_id=(val)
-    self.dw_user_id = val
+    val
   end
 
   def column_names_merged_with_images
