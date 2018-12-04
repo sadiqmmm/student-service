@@ -1,7 +1,8 @@
 class ClientSerializer < ActiveModel::Serializer
   attributes :id,
              :email,
-             :subdomain
+             :subdomain,
+             :auth_token
 
   has_many :client_domains
 end

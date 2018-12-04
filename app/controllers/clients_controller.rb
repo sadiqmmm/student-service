@@ -10,7 +10,6 @@ class ClientsController < ApplicationController
   end
 
   def get_client_applications
-    puts "get client applications" * 500, @current_client.inspect, "get_client applications" * 500
     render json: @current_client
   end
 
