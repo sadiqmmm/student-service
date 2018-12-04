@@ -1,5 +1,5 @@
 class PortfolioBlogSerializer < ActiveModel::Serializer
-  attributes :id,
+  attributes :portfolio_id,
              :title,
              :content,
              :blog_status,

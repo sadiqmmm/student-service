@@ -10,6 +10,10 @@ class PortfolioBlog < ApplicationRecord
     published: 1
   }
 
+  def portfolio_id
+    self.client.auth_token + String(self.id)
+  end
+
   def featured_image_url
     if self.featured_image.attachment
       self.featured_image.attachment.service_url
