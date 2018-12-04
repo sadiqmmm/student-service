@@ -3,6 +3,7 @@ class PortfolioItemSerializer < ActiveModel::Serializer
              :name,
              :description,
              :url,
+             :category,
              :thumb_image_url,
              :banner_image_url,
              :logo_url,

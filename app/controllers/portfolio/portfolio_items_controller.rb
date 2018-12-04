@@ -69,7 +69,8 @@ class Portfolio::PortfolioItemsController < ApplicationController
         :url,
         :thumb_image,
         :banner_image,
-        :logo
+        :logo,
+        :category
       )
     end
 end

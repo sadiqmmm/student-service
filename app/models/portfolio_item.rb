@@ -25,7 +25,7 @@ class PortfolioItem < ApplicationRecord
   def column_names_merged_with_images
     PortfolioItem.column_names
       .select { |column| !['client_id', 'created_at', 'updated_at'].include?(column) }
-      .push(['thumb_image', 'banner_image', 'logo'])
+      .push(['category', 'thumb_image', 'banner_image', 'logo'])
       .flatten
       .uniq
   end
