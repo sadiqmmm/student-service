@@ -4,7 +4,11 @@ class Portfolio::PortfolioItemsController < ApplicationController
   include ClientFromSubdomainConcern
 
   def index
-    @portfolio_items = @client.portfolio_items
+    if params[:order_by] && params[:direction]
+      @portfolio_items = @client.portfolio_items.order("#{params[:order_by]} #{params[:direction]}")
+    else
+      @portfolio_items = @client.portfolio_items.order(id: :asc)
+    end
 
     if @portfolio_items.count == 0
       @portfolio_items = [PortfolioItem.new]

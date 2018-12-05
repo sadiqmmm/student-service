@@ -4,8 +4,6 @@ class PortfolioItem < ApplicationRecord
   has_one_attached :banner_image
   has_one_attached :logo
 
-  default_scope { order(id: :asc) }
-
   def thumb_image_url
     if self.thumb_image.attachment
       self.thumb_image.attachment.service_url
