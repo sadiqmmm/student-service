@@ -70,7 +70,8 @@ class Portfolio::PortfolioItemsController < ApplicationController
         :thumb_image,
         :banner_image,
         :logo,
-        :category
+        :category,
+        :position
       )
     end
 end
