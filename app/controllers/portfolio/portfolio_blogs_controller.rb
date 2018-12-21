@@ -54,6 +54,7 @@ class Portfolio::PortfolioBlogsController < ApplicationController
 
   private
     def set_portfolio_blog
+      puts "SET" * 500, params[:id], "set" * 500
       @portfolio_blog = PortfolioBlog.find(params[:id])
     end
 
