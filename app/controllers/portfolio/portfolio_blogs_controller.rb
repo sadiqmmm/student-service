@@ -4,7 +4,7 @@ class Portfolio::PortfolioBlogsController < ApplicationController
   include ClientFromSubdomainConcern
 
   def index
-    @portfolio_blogs = @client.portfolio_blogs
+    @portfolio_blogs = @client.portfolio_blogs.order(created_at: :desc)
 
     if @portfolio_blogs.count == 0
       @portfolio_blogs = [PortfolioBlog.new]
