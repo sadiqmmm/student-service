@@ -44,12 +44,15 @@ class Portfolio::PortfolioItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /portfolio_items/1
   def update
-    if @portfolio_item.update(portfolio_item_params)
-      redirect_to @portfolio_item, notice: 'Portfolio item was successfully updated.'
+    if @current_client && @portfolio_item.client == @current_client
+      if @portfolio_item.update(portfolio_item_params)
+        render json: @portfolio_item, status: :created
+      else
+        render json: @portfolio_item.errors, status: :unprocessable_entity
+      end
     else
-      render :edit
+      render json: { status: :unauthorized }
     end
   end
 
