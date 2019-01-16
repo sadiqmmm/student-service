@@ -4,7 +4,7 @@ class Portfolio::PortfolioItemImagesController < ApplicationController
 
   def destroy
     if @portfolio_item.client == @current_client
-      puts "DESTROY" * 500, @portfolio_item.inspect, "destroy" * 500
+      puts "DESTROY" * 500, @portfolio_item.inspect, "destroy" * 500, params.inspect
     else
       render json: { status: :unauthorized }
     end
