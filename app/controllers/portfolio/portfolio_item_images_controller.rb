@@ -7,10 +7,7 @@ class Portfolio::PortfolioItemImagesController < ApplicationController
 
     if @portfolio_item.client == @current_client
       if params["image_type"] && list_of_images.include?(params["image_type"])
-        puts "PORTFOLIO_ITEM" * 500, @portfolio_item.thumb_image.service_url, "portfolio_item" * 500
         @portfolio_item.send(params["image_type"]).purge
-        puts "PORTFOLIO_ITEM" * 500, @portfolio_item.thumb_image.service_url, "portfolio_item" * 500
-        puts "params" * 500, params.inspect, "PARAMS" * 500
         render json: { status: 204 }
       else
         render json: { status: :unprocessable_entity }
