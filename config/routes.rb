@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Portfolio
   namespace :portfolio do
     resources :portfolio_items, only: [:index, :show, :update, :create, :destroy]
+    delete 'delete-portfolio-image/:id', to: 'portfolio_item_images#destroy'
     resources :portfolio_app_users
     resources :portfolio_blogs
   end
