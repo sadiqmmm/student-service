@@ -1,18 +1,16 @@
 class Portfolio::PortfolioBlogsController < ApplicationController
   before_action :set_portfolio_blog, only: [:show, :edit, :update, :destroy]
-  include PagerApi::Pagination::Kaminari
   include AuthenticationConcern
   include ClientFromSubdomainConcern
 
   def index
     @portfolio_blogs = @client.portfolio_blogs.order(created_at: :desc)
 
-    # if @portfolio_blogs.count == 0
-    #   @portfolio_blogs = [PortfolioBlog.new]
-    # end
-    #
-    # render json: @portfolio_blogs
-    paginate @portfolio_blogs, per_page: 3
+    if @portfolio_blogs.count == 0
+      @portfolio_blogs = [PortfolioBlog.new]
+    end
+
+    render json: @portfolio_blogs
   end
 
   def show
