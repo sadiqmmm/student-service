@@ -5,17 +5,17 @@ class Portfolio::PortfolioBlogsController < ApplicationController
   include ClientFromSubdomainConcern
 
   def index
-    # TODO
-    # render published + draft blogs if @current_user
-    # render only published if !@current_user
-
-    @portfolio_blogs = @client.portfolio_blogs.order(created_at: :desc)
+    if @current_client
+      @portfolio_blogs = @client.portfolio_blogs.order(created_at: :desc)
+    else
+      @portfolio_blogs = @client.portfolio_blogs.published.order(created_at: :desc)
+    end
 
     if @portfolio_blogs.count == 0
       @portfolio_blogs = [PortfolioBlog.new]
     end
 
-    paginated_blogs = paginate @portfolio_blogs, per_page: 3
+    paginated_blogs = paginate @portfolio_blogs, per_page: 10
     render json: paginated_blogs, meta: { total_pages: paginated_blogs.total_pages, total_records: @portfolio_blogs.count }
   end
 
