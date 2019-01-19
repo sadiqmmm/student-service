@@ -10,7 +10,7 @@ class Portfolio::PortfolioBlogsController < ApplicationController
       @portfolio_blogs = [PortfolioBlog.new]
     end
 
-    render json: @portfolio_blogs
+    render json: paginate @portfolio_blogs, per_page: 3
   end
 
   def show
