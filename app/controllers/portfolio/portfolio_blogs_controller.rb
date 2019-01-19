@@ -1,5 +1,6 @@
 class Portfolio::PortfolioBlogsController < ApplicationController
   before_action :set_portfolio_blog, only: [:show, :edit, :update, :destroy]
+  include PagerApi::Pagination::Kaminari
   include AuthenticationConcern
   include ClientFromSubdomainConcern
 
