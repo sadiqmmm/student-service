@@ -25,3 +25,5 @@ gem 'active_model_serializers', '~> 0.10.7'
 gem 'email_validator'
 gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 gem "aws-sdk-s3", require: false
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'pager_api', '~> 0.2.3'

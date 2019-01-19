@@ -85,6 +85,18 @@ GEM
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
     jsonapi-renderer (0.2.0)
+    kaminari (1.1.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.1)
+      kaminari-activerecord (= 1.1.1)
+      kaminari-core (= 1.1.1)
+    kaminari-actionview (1.1.1)
+      actionview
+      kaminari-core (= 1.1.1)
+    kaminari-activerecord (1.1.1)
+      activerecord
+      kaminari-core (= 1.1.1)
+    kaminari-core (1.1.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -105,6 +117,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
+    pager_api (0.2.3)
     pg (1.0.0)
     puma (3.12.0)
     rack (2.0.5)
@@ -188,7 +201,9 @@ DEPENDENCIES
   byebug
   email_validator
   friendly_id (~> 5.2, >= 5.2.4)
+  kaminari (~> 1.1, >= 1.1.1)
   listen (>= 3.0.5, < 3.2)
+  pager_api (~> 0.2.3)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rack-cors

@@ -6,11 +6,12 @@ class Portfolio::PortfolioBlogsController < ApplicationController
   def index
     @portfolio_blogs = @client.portfolio_blogs.order(created_at: :desc)
 
-    if @portfolio_blogs.count == 0
-      @portfolio_blogs = [PortfolioBlog.new]
-    end
-
-    render json: @portfolio_blogs
+    # if @portfolio_blogs.count == 0
+    #   @portfolio_blogs = [PortfolioBlog.new]
+    # end
+    #
+    # render json: @portfolio_blogs
+    paginate @portfolio_blogs, per_page: 3
   end
 
   def show
