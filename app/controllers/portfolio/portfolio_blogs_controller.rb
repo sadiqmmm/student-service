@@ -15,7 +15,7 @@ class Portfolio::PortfolioBlogsController < ApplicationController
       @portfolio_blogs = [PortfolioBlog.new]
     end
 
-    paginated_blogs = paginate @portfolio_blogs, per_page: 10
+    paginated_blogs = paginate @portfolio_blogs.page(params[:page]), per_page: 3
     render json: paginated_blogs, meta: { total_pages: paginated_blogs.total_pages, total_records: @portfolio_blogs.count }
   end
 
