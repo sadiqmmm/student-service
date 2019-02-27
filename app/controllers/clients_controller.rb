@@ -51,8 +51,8 @@ class ClientsController < ApplicationController
   end
 
   def registration_validations
-    if params[:username]
-      if Client.find_by(username: params[:username])
+    if params[:subdomain]
+      if Client.find_by(subdomain: params[:subdomain])
         render json: { validation: "EXISTS" }
       else
         render json: { validation: "DOES_NOT_EXIST" }
