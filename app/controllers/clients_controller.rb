@@ -50,6 +50,22 @@ class ClientsController < ApplicationController
     redirect_to clients_url, notice: 'Client was successfully destroyed.'
   end
 
+  def registration_validations
+    if params[:username]
+      if Client.find_by(username: params[:username])
+        render json: { validation: "EXISTS" }
+      else
+        render json: { validation: "DOES_NOT_EXIST" }
+      end
+    elsif params[:email]
+      if Client.find_by(email: params[:email])
+        render json: { validation: "EXISTS" }
+      else
+        render json: { validation: "DOES_NOT_EXIST" }
+      end
+    end
+  end
+
   private
     def set_client
       @client = Client.find(params[:id])

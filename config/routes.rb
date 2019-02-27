@@ -31,5 +31,6 @@ Rails.application.routes.draw do
   delete :logout, to: 'sessions#logout'
   get :logged_in, to: 'sessions#logged_in'
   get 'get-client-applications', to: 'clients#get_client_applications'
+  get 'registration-validations', to: 'clients#registration_validations'
   root to: 'home#index'
 end
