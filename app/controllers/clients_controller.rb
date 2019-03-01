@@ -51,7 +51,6 @@ class ClientsController < ApplicationController
   end
 
   def registration_validations
-    puts "registration_validations" * 500, params.inspect, "REGISTRATION_VALIDATIONS" * 500
     if params[:subdomain]
       if Client.find_by(subdomain: params[:subdomain])
         render json: { validation: "EXISTS" }
