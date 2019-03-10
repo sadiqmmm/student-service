@@ -24,10 +24,6 @@ class Portfolio::PortfolioBlogsController < ApplicationController
     render json: @portfolio_blog
   end
 
-  # GET /portfolio_items/1/edit
-  def edit
-  end
-
   def create
     if @current_client && @current_client == @client
       @portfolio_blog = @client.portfolio_blogs.new(portfolio_blog_params)
