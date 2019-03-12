@@ -41,7 +41,7 @@ class Portfolio::PortfolioBlogsController < ApplicationController
   def update
     if @current_client && @portfolio_blog.client == @current_client
       if @portfolio_blog.update(portfolio_blog_params)
-        render json: @portfolio_blog, status: :updated
+        render json: @portfolio_blog, status: :created
       else
         render json: @portfolio_blog.errors, status: :unprocessable_entity
       end
