@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     delete 'delete-portfolio-image/:id', to: 'portfolio_item_images#destroy'
     resources :portfolio_app_users
     resources :portfolio_blogs
+    delete 'delete-portfolio-blog-image/:id', to: 'portfolio_blog_images#destroy'
   end
 
   # Devworkflow
