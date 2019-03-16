@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
   def create
     client = Client.create!(
       email: params['client']['email'],
-      subdomain: params['client']['subdomain'],
+      subdomain: params['client']['subdomain'].downcase,
       password: params['client']['password'],
       password_confirmation: params['client']['password_confirmation'],
       auth_token: unique_auth_token
