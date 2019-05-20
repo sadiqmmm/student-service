@@ -10,9 +10,11 @@ Rails.application.routes.draw do
 
   # Ecom
   namespace :shop do
-    resources :shop_items, only: [:index, :show, :update, :create, :destroy]
-    delete 'delete-shop-image/:id', to: 'shop_item_images#destroy'
-    resources :shop_users
+    resources :products
+    resources :shop_user_sessions, only: [:create]
+    resources :shop_user_registrations, only: [:create]
+    delete :logout, to: 'shop_user_sessions#logout'
+    get :logged_in, to: 'shop_user_sessions#logged_in'
   end
 
   # Devworkflow
