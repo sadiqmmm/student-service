@@ -8,6 +8,13 @@ Rails.application.routes.draw do
     delete 'delete-portfolio-blog-image/:id', to: 'portfolio_blog_images#destroy'
   end
 
+  # Ecom
+  namespace :shop do
+    resources :shop_items, only: [:index, :show, :update, :create, :destroy]
+    delete 'delete-shop-image/:id', to: 'shop_item_images#destroy'
+    resources :shop_users
+  end
+
   # Devworkflow
   namespace :devworkflow do
     resources :check_list_items
