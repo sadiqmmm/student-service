@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get :heat_map_data, to: "api_tutorials#heat_map_data"
+  get 'heat-map-data', to: "api_tutorials#heat_map_data"
+
   # Portfolio
   namespace :portfolio do
     resources :portfolio_items, only: [:index, :show, :update, :create, :destroy]
