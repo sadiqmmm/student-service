@@ -27,3 +27,5 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 gem "aws-sdk-s3", require: false
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'api-pagination', '~> 4.8', '>= 4.8.2'
+gem "nokogiri", ">= 1.10.4"
+
