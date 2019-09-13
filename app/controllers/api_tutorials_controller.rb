@@ -1107,6 +1107,6 @@ class ApiTutorialsController < ApplicationController
       }
     ]
 
-    render json: { data: data }
+    render json: { heat_map_data: data }
   end
 end
