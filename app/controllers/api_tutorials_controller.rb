@@ -1,4 +1,4 @@
-class ApiTutorials < ApplicationController
+class ApiTutorialsController < ApplicationController
   def heat_map_data
     data = [
       {
