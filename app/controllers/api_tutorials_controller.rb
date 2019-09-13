@@ -1,5 +1,6 @@
 class ApiTutorialsController < ApplicationController
   def heat_map_data
+    sleep 5
     data = [
       {
         "bin": 0,
