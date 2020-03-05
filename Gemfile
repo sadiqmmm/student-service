@@ -5,7 +5,7 @@ ruby '2.5.7'
 
 gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.12'
+gem "puma", ">= 3.12.4"
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
