@@ -28,4 +28,4 @@ gem "aws-sdk-s3", require: false
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'api-pagination', '~> 4.8', '>= 4.8.2'
 gem "nokogiri", ">= 1.10.4"
-
+gem 'knock', '~> 2.1', '>= 2.1.1'
