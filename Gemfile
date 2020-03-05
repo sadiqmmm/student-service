@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.7'
 
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.12'
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -29,3 +29,4 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'api-pagination', '~> 4.8', '>= 4.8.2'
 gem "nokogiri", ">= 1.10.8"
 gem 'knock', '~> 2.1', '>= 2.1.1'
+gem "actionview", ">= 5.2.2.1"
