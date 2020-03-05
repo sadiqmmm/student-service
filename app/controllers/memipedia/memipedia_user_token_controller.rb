@@ -1,2 +1,2 @@
-class MemipediaUserTokenController < Knock::AuthTokenController
+class Memipedia::MemipediaUserTokenController < Knock::AuthTokenController
 end
