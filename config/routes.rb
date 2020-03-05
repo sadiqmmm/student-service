@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'memipedia_user_token' => 'memipedia_user_token#create'
   get 'heat-map-data', to: "api_tutorials#heat_map_data"
 
   # Portfolio
