@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.5.7'
 
 gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -27,5 +27,5 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 gem "aws-sdk-s3", require: false
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'api-pagination', '~> 4.8', '>= 4.8.2'
-gem "nokogiri", ">= 1.10.4"
+gem "nokogiri", ">= 1.10.8"
 gem 'knock', '~> 2.1', '>= 2.1.1'
