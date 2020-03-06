@@ -9,16 +9,22 @@ class Memipedia::MemipediaUsersController < ApplicationController
 
   def create
     puts "CREATE" * 500, params.inspect, "create" * 500
-    user = MemipediaUser.new(user_params)
 
-    if user.save
-      render json: user
+    if @client
+      user = MemipediaUser.new(user_params)
+      user.client = @client
+
+      if user.save
+        render json: user
+      else
+        render json: {
+          status: 422,
+          msg: 'USER_CREATION_ERROR',
+          errors: user.errors
+        }
+      end
     else
-      render json: {
-        status: 422,
-        msg: 'USER_CREATION_ERROR',
-        errors: user.errors
-      }
+      render json: { status: :unauthorized }
     end
   end
 
