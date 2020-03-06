@@ -1,6 +1,7 @@
 class Memipedia::MemipediaUsersController < ApplicationController
   before_action :authenticate_memipedia_user, only: [:index, :update]
   before_action :authorize,                   only: [:update, :destroy]
+  include ClientFromSubdomainConcern
 
   def index
     render json: current_memipedia_user
