@@ -29,9 +29,12 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
 
     if users.any?
       users.map do |user|
-        user_object = user.as_json
+        user_object = Hash.new.as_json
+        user_object[:id] = user.id
+        user_object[:email] = user.email
         user_object[:password] = "ENCRYPTED"
         user_object[:password_confirmation] = "ENCRYPTED"
+        user_object[:created_at] = user.created_at
         user_object[:column_names_merged_with_images] = [
           'id',
           'email',
