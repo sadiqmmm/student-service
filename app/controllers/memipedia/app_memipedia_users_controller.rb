@@ -3,7 +3,7 @@ class Memipedia::MemipediaUsersController < ApplicationController
 
   def index
     if @client
-      render json: @client.memipedia_users
+      render json: @client.memipedia_users, each_serializer: AppMemipediaUserSerializer
     else
       render json: { status: :unauthorized }
     end

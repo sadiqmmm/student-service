@@ -14,7 +14,7 @@ class MemipediaUser < ApplicationRecord
   def column_names_merged_with_images
     MemipediaUser.column_names
       .select { |column| !['client_id', 'app_template_id', 'password_digest', 'updated_at'].include?(column) }
-      .push(['id', 'email', 'created_at'])
+      .push(['id', 'email', 'password', 'password_confirmation', 'created_at'])
       .flatten
       .uniq
   end
