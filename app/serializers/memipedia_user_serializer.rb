@@ -1,6 +1,6 @@
 class MemipediaUserSerializer < ActiveModel::Serializer
-  attributes :created_at,
+  attributes :id,
              :email,
-             :id,
+             :created_at,
              :column_names_merged_with_images
 end
