@@ -10,4 +10,12 @@ class MemipediaUser < ApplicationRecord
   def can_modify_user?(user_id)
     id.to_s == user_id.to_s
   end
+
+  def column_names_merged_with_images
+    MemipediaUser.column_names
+      .select { |column| !['client_id', 'updated_at'].include?(column) }
+      .push(['created_at', 'email', 'id'])
+      .flatten
+      .uniq
+  end
 end
