@@ -23,9 +23,11 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
 
   private
 
-
   def devcamp_space_serializer client
     users = client.memipedia_users
+
+    # TODO
+    # create empty state
 
     if users.any?
       users.map do |user|
