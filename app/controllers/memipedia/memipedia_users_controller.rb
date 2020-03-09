@@ -1,5 +1,5 @@
-class Memipedia::MemipediaUsersController < ApplicationController
-  before_action :authenticate_memipedia_user, only: [:index, :update]
+class Memipedia::MemipediaUsersController < MobileApplicationController
+  before_action :authenticate_memipedia_user, only: [:update, :destroy]
   before_action :authorize,                   only: [:update, :destroy]
   include ClientFromSubdomainConcern
 
