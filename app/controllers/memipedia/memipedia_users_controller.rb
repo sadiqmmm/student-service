@@ -3,14 +3,6 @@ class Memipedia::MemipediaUsersController < MobileApplicationController
   before_action :authorize,                   only: [:update, :destroy]
   include ClientFromSubdomainConcern
 
-  def index
-    if @client
-      render json: @client.memipedia_users
-    else
-      render json: { status: :unauthorized }
-    end
-  end
-
   def create
     puts "CREATE" * 500, params.inspect, "create" * 500
 

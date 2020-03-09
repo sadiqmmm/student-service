@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :memipedia do
     post 'memipedia_user_token' => 'memipedia_user_token#create'
     resources :memipedia_users
+    resources :app_memipedia_users
   end
 
   # Portfolio
