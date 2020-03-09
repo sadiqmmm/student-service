@@ -4,7 +4,11 @@ class Memipedia::MemipediaUsersController < ApplicationController
   include ClientFromSubdomainConcern
 
   def index
-    render json: current_memipedia_user
+    if @client
+      render json: @client.memipedia_users
+    else
+      render json: { status: :unauthorized }
+    end
   end
 
   def create

@@ -16,4 +16,6 @@ class Client < ApplicationRecord
   has_many :devworkflow_projects, dependent: :destroy
   has_many :devworkflow_project_line_items, dependent: :destroy
   has_many :devworkflow_users, dependent: :destroy
+
+  has_many :memipedia_users, dependent: :destroy
 end
