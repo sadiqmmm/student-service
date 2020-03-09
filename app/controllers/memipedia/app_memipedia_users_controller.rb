@@ -1,4 +1,4 @@
-class Memipedia::MemipediaUsersController < ApplicationController
+class Memipedia::AppMemipediaUsersController < ApplicationController
   include ClientFromSubdomainConcern
 
   def index
