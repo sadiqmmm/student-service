@@ -10,14 +10,30 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
   end
 
   def create
+    if @client
+      user = MemipediaUser.new(user_params)
+      user.client = @client
 
+      if user.save
+        render json: user, status: :created
+      else
+        render json: user.errors, status: :unprocessable_entity
+      end
+    else
+      render json: { status: :unauthorized }
+    end
   end
 
   def destroy
-    user = MemipediaUser.find(params[:id])
-    if user && user.client == @client
-      user.destroy
-      render json: { status: 200, msg: 'User has been deleted.' }
+    if @client
+      user = MemipediaUser.find(params[:id])
+
+      if user && user.client == @client
+        user.destroy
+        render json: { status: 200, msg: 'User has been deleted.' }
+      end
+    else
+      render json: { status: :unauthorized }
     end
   end
 

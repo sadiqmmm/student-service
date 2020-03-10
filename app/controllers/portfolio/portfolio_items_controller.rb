@@ -31,8 +31,6 @@ class Portfolio::PortfolioItemsController < ApplicationController
   end
 
   def create
-    puts "CURRENT_CLIENT" * 500, @current_client.inspect, "current_client" * 500
-    puts "CLIENT" * 500, @client.inspect, "client" * 500
     if @current_client && @current_client == @client
       @portfolio_item = @client.portfolio_items.new(portfolio_item_params)
 
