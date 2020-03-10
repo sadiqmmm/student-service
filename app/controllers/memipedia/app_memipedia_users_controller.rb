@@ -15,7 +15,7 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
       user.client = @client
 
       if user.save
-        render json: { app_memipedia_user: user, status: :created }
+        render json: { app_memipedia_user: serializer_user(user), status: :created }
       else
         render json: user.errors, status: :unprocessable_entity
       end
@@ -39,6 +39,23 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
 
   private
 
+  def serializer_user user
+    user_object = Hash.new.as_json
+    user_object[:id] = user.id
+    user_object[:email] = user.email
+    user_object[:password] = "ENCRYPTED"
+    user_object[:password_confirmation] = "ENCRYPTED"
+    user_object[:created_at] = user.created_at
+    user_object[:column_names_merged_with_images] = [
+      'id',
+      'email',
+      'password',
+      'password_confirmation',
+      'created_at'
+    ]
+    user_object
+  end
+
   def devcamp_space_serializer client
     users = client.memipedia_users
 
@@ -47,20 +64,7 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
 
     if users.any?
       users.map do |user|
-        user_object = Hash.new.as_json
-        user_object[:id] = user.id
-        user_object[:email] = user.email
-        user_object[:password] = "ENCRYPTED"
-        user_object[:password_confirmation] = "ENCRYPTED"
-        user_object[:created_at] = user.created_at
-        user_object[:column_names_merged_with_images] = [
-          'id',
-          'email',
-          'password',
-          'password_confirmation',
-          'created_at'
-        ]
-        user_object
+        serializer_user user
       end
     end
   end
