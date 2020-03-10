@@ -10,7 +10,7 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
   end
 
   def create
-    # TODO
+
   end
 
   def destroy
@@ -50,7 +50,7 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(
+    params.require(:app_memipedia_user).permit(
       :email,
       :password,
       :password_confirmation
