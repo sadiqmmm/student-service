@@ -15,7 +15,7 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
       user.client = @client
 
       if user.save
-        render json: { app_memipedia_users: user, status: :created }
+        render json: { app_memipedia_user: user, status: :created }
       else
         render json: user.errors, status: :unprocessable_entity
       end
