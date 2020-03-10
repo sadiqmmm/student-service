@@ -59,13 +59,25 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
   def devcamp_space_serializer client
     users = client.memipedia_users
 
-    # TODO
-    # create empty state
-
     if users.any?
       users.map do |user|
         serializer_user user
       end
+    else
+      user_object = Hash.new.as_json
+      user_object[:id] = 123
+      user_object[:email] = "user@example.com"
+      user_object[:password] = "ENCRYPTED"
+      user_object[:password_confirmation] = "ENCRYPTED"
+      user_object[:created_at] = Date.today
+      user_object[:column_names_merged_with_images] = [
+        'id',
+        'email',
+        'password',
+        'password_confirmation',
+        'created_at'
+      ]
+      [user_object]
     end
   end
 
