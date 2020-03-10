@@ -14,11 +14,11 @@ class Memipedia::AppMemipediaUsersController < ApplicationController
   end
 
   def destroy
-    # TODO
-    # user = MemipediaUser.find(params[:id])
-    # if user.destroy
-    #   render json: { status: 200, msg: 'User has been deleted.' }
-    # end
+    user = MemipediaUser.find(params[:id])
+    if user && user.client == @client
+      user.destroy
+      render json: { status: 200, msg: 'User has been deleted.' }
+    end
   end
 
   private
