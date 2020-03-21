@@ -30,3 +30,4 @@ gem 'api-pagination', '~> 4.8', '>= 4.8.2'
 gem "nokogiri", ">= 1.10.8"
 gem 'knock', '~> 2.1', '>= 2.1.1'
 gem "actionview", ">= 5.2.2.1"
+gem 'rails_same_site_cookie', '~> 0.1.7'
