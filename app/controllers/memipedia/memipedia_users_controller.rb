@@ -4,8 +4,6 @@ class Memipedia::MemipediaUsersController < MobileApplicationController
   include ClientFromSubdomainConcern
 
   def create
-    puts "CREATE" * 500, params.inspect, "create" * 500
-
     if @client
       user = MemipediaUser.new(user_params)
       user.client = @client

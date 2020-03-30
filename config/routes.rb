@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'heat-map-data', to: "api_tutorials#heat_map_data"
 
+  # Memipedia mobile
   namespace :memipedia do
     post 'memipedia_user_token' => 'memipedia_user_token#create'
     resources :memipedia_users
