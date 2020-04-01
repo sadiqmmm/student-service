@@ -23,6 +23,7 @@ class Memipedia::MemipediaUsersController < MobileApplicationController
   end
 
   def update
+    # TODO
     user = MemipediaUser.find(params[:id])
 
     if user.update(user_params)
@@ -32,6 +33,13 @@ class Memipedia::MemipediaUsersController < MobileApplicationController
         status: 422,
         msg: 'ERROR_UPDATING'
       }
+    end
+  end
+
+  def logged_in
+    if @client
+    else
+      render json: { status: :unauthorized }
     end
   end
 
