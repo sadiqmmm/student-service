@@ -1,5 +1,5 @@
 class Memipedia::MemipediaUsersController < MobileApplicationController
-  before_action :authenticate_memipedia_user, only: [:update, :destroy]
+  before_action :authenticate_memipedia_user, only: [:update, :destroy, :logged_in]
   before_action :authorize,                   only: [:update, :destroy]
   include ClientFromSubdomainConcern
 
@@ -38,6 +38,7 @@ class Memipedia::MemipediaUsersController < MobileApplicationController
 
   def logged_in
     if @client
+      render json: current_memipedia_user
     else
       render json: { status: :unauthorized }
     end
