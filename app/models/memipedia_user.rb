@@ -7,10 +7,6 @@ class MemipediaUser < ApplicationRecord
   belongs_to :client
   belongs_to :app_template, optional: true
 
-  def to_token_payload
-    {sub: id, user: self}
-  end
-
   def can_modify_user?(user_id)
     id.to_s == user_id.to_s
   end
