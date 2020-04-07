@@ -40,6 +40,23 @@ class Memipedia::MemipediaPostsController < MobileApplicationController
 
   private
 
+    def serializer_post post
+      post_object = Hash.new.as_json
+      post_object[:id] = post.id
+      post_object[:name] = post.name
+      post_object[:content] = post.content
+      post_object[:post_image] = post.image
+      post_object[:created_at] = post.created_at
+      post_object[:column_names_merged_with_images] = [
+        'id',
+        'name',
+        'content',
+        'post_image',
+        'created_at'
+      ]
+      post_object
+    end
+
     def devcamp_space_serializer client
       posts = client.memipedia_posts
 
