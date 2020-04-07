@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_204419) do
+ActiveRecord::Schema.define(version: 2020_04_07_220719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,17 @@ ActiveRecord::Schema.define(version: 2020_03_05_204419) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "memipedia_posts", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "memipedia_user_id"
+    t.string "name"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_memipedia_posts_on_client_id"
+    t.index ["memipedia_user_id"], name: "index_memipedia_posts_on_memipedia_user_id"
+  end
+
   create_table "memipedia_users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -203,6 +214,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_204419) do
   add_foreign_key "devworkflow_projects", "devworkflow_users"
   add_foreign_key "devworkflow_users", "clients"
   add_foreign_key "endpoints", "projects"
+  add_foreign_key "memipedia_posts", "clients"
+  add_foreign_key "memipedia_posts", "memipedia_users"
   add_foreign_key "memipedia_users", "app_templates"
   add_foreign_key "memipedia_users", "clients"
   add_foreign_key "portfolio_app_users", "app_templates"
