@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :memipedia do
     post 'memipedia_user_token' => 'memipedia_user_token#create'
     resources :memipedia_users
+    resources :memipedia_posts
     get :logged_in, to: 'memipedia_users#logged_in'
     resources :app_memipedia_users
   end
