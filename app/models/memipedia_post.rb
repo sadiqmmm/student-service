@@ -9,4 +9,12 @@ class MemipediaPost < ApplicationRecord
       self.image.attachment.service_url
     end
   end
+
+  def column_names_merged_with_images
+    MemipediaPost.column_names
+      .select { |column| !['client_id'].include?(column) }
+      .push(['id', 'name', 'content', 'image', 'created_at'])
+      .flatten
+      .uniq
+  end
 end
