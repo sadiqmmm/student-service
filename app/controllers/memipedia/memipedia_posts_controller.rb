@@ -30,25 +30,21 @@ class Memipedia::MemipediaPostsController < MobileApplicationController
   end
 
   def show
-    post = MemipediaPost.find(params[:id])
-    render json: post
-  end
-
-  def destroy
-    post = MemipediaPost.find(params[:id])
-
-    if post.destroy
-      render json: { status: 200, msg: 'POST_DELETED' }
+    if @client
+      post = MemipediaPost.find(params[:id])
+      render json: post
+    else
+      render json: { status: :unauthorized }
     end
   end
 
   private
 
-  def post_params
-    params.require(:post).permit(
-      :name,
-      :content,
-      :image
-    )
-  end
+    def post_params
+      params.require(:post).permit(
+        :name,
+        :content,
+        :image
+      )
+    end
 end
