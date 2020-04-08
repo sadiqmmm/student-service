@@ -1,4 +1,4 @@
-class Memipedia::MemipediaPostsController < MobileApplicationController
+class Memipedia::AppMemipediaPostsController < MobileApplicationController
   before_action :authenticate_memipedia_user
   include ClientFromSubdomainConcern
 
