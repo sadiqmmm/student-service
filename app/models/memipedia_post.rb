@@ -1,6 +1,6 @@
 class MemipediaPost < ApplicationRecord
   belongs_to :client
-  belongs_to :memipedia_user
+  belongs_to :memipedia_user, optional: true
 
   has_one_attached :post_image
 
