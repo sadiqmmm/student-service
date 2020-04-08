@@ -18,4 +18,5 @@ class Client < ApplicationRecord
   has_many :devworkflow_users, dependent: :destroy
 
   has_many :memipedia_users, dependent: :destroy
+  has_many :memipedia_posts, dependent: :destroy
 end
