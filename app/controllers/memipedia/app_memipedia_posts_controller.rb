@@ -35,7 +35,7 @@ class Memipedia::AppMemipediaPostsController < MobileApplicationController
       post_object[:id] = post.id
       post_object[:name] = post.name
       post_object[:content] = post.content
-      post_object[:post_image] = post.post_image
+      post_object[:post_image] = post.post_image_url
       post_object[:created_at] = post.created_at
       post_object[:column_names_merged_with_images] = [
         'id',
