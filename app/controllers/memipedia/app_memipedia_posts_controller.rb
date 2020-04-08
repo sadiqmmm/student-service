@@ -28,6 +28,20 @@ class Memipedia::AppMemipediaPostsController < MobileApplicationController
     end
   end
 
+  def destroy
+    if @client
+      post = MemipediaPost.find(params[:id])
+
+      if post.client == @client
+        post.destroy
+      else
+        render json: { status: :unauthorized }
+      end
+    else
+      render json: { status: :unauthorized }
+    end
+  end
+
   private
 
     def serializer_post post
