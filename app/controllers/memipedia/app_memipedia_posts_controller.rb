@@ -76,7 +76,7 @@ class Memipedia::AppMemipediaPostsController < MobileApplicationController
       params.require(:app_memipedia_post).permit(
         :name,
         :content,
-        :image
+        :post_image
       )
     end
 end
