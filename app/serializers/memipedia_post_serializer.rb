@@ -1,6 +1,6 @@
 class MemipediaPostSerializer < ActiveModel::Serializer
   attributes :id,
-             :image_url,
+             :post_image_url,
              :name,
              :content,
              :created_at,
