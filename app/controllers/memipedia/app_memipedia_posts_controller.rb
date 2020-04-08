@@ -15,7 +15,7 @@ class Memipedia::AppMemipediaPostsController < MobileApplicationController
       post.client = @client
 
       if post.save
-        render json: { app_memipedia_user: serializer_post(post), status: :created }
+        render json: { app_memipedia_post: serializer_post(post), status: :created }
       else
         render json: {
           status: 422,
