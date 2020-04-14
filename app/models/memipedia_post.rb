@@ -5,7 +5,7 @@ class MemipediaPost < ApplicationRecord
   validates_presence_of :name, :content
 
   has_one_attached :post_image
-  # validates :post_image, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
+  validates :post_image, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
 
   def post_image_url
     if self.post_image.attachment

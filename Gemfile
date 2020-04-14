@@ -31,3 +31,4 @@ gem "nokogiri", ">= 1.10.8"
 gem 'knock', '~> 2.1', '>= 2.1.1'
 gem "actionview", ">= 5.2.4.2"
 gem 'rails_same_site_cookie', '~> 0.1.7'
+gem 'active_storage_validations', '~> 0.8.8'
