@@ -59,6 +59,7 @@ class Portfolio::PortfolioItemsController < ApplicationController
   def destroy
     if @portfolio_item.client == @current_client
       @portfolio_item.destroy
+      render json: { msg: "RECORD_DELETED" }
     else
       render json: { status: :unauthorized }
     end

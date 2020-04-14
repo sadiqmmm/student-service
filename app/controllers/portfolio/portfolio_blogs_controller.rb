@@ -53,6 +53,7 @@ class Portfolio::PortfolioBlogsController < ApplicationController
   def destroy
     if @portfolio_blog.client == @current_client
       @portfolio_blog.destroy
+      render json: { msg: "RECORD_DELETED" }
     else
       render json: { status: :unauthorized }
     end

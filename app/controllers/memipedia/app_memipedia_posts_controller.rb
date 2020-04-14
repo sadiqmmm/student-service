@@ -34,6 +34,7 @@ class Memipedia::AppMemipediaPostsController < MobileApplicationController
 
       if post.client == @client
         post.destroy
+        render json: { msg: "RECORD_DELETED" }
       else
         render json: { status: :unauthorized }
       end
