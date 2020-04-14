@@ -5,4 +5,6 @@ class MemipediaPostSerializer < ActiveModel::Serializer
              :content,
              :created_at,
              :column_names_merged_with_images
+
+  belongs_to :memipedia_user
 end

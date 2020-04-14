@@ -14,6 +14,7 @@ class Memipedia::MemipediaPostsController < MobileApplicationController
     if @client
       post = MemipediaPost.new(post_params)
       post.client = @client
+      post.memipedia_user = current_memipedia_user
 
       if post.save
         render json: post
@@ -42,9 +43,9 @@ class Memipedia::MemipediaPostsController < MobileApplicationController
 
     def post_params
       params.require(:post).permit(
-        :name,
         :content,
-        :image
+        :name,
+        :post_image
       )
     end
 end
